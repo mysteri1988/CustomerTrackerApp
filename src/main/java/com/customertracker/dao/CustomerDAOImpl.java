@@ -24,7 +24,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Transactional
 	public List<Customer> getCustomers() {
 		var currentSession = sessionFactory.getCurrentSession();
-		Query<Customer> theQuery = currentSession.createQuery("from customer", Customer.class);
+		Query<Customer> theQuery = currentSession.createQuery("from Customer", Customer.class);
 		return theQuery.getResultList();
 	}
 
