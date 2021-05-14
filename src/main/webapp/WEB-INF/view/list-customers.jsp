@@ -6,8 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Customers</title>
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css" />
 </head>
 <body>
+	<div id="wrapper">
+		<div id="header">
+			<h2>Customer manager system</h2>
+		</div>
+	</div>
 	<div id="container">
 		<div id="content">
 			<table>
