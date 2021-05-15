@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.customertracker.entity.Customer;
 import com.customertracker.service.CustomerService;
@@ -41,11 +42,21 @@ public class CustomerController {
 
 		return "customer-form";
 	}
-	
+
 	@PostMapping("/saveCustomer")
 	public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
 		customerService.save(theCustomer);
 		return "redirect:/customer/list";
 	}
-	
+
+	@GetMapping("/showFormForUpdate")
+	public String updateCustomer(@RequestParam("customerId") int theId, Model theModel) {
+
+		var customer = customerService.getById(theId);
+
+		theModel.addAttribute("customer", customer);
+
+		return "customer-form";
+	}
+
 }
