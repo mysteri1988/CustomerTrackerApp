@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="com.customertracker.util.SortUtils"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +12,19 @@
 	href="${pageContext.request.contextPath}/resources/css/style.css" />
 </head>
 <body>
+	<c:url var="sortLinkFirstName" value="/customer/list">
+		<c:param name="sort"
+			value="<%=Integer.toString(SortUtils.FIRST_NAME)%>" />
+	</c:url>
+	
+	<c:url var="sortLinkLastName" value="/customer/list">
+		<c:param name="sort"
+			value="<%=Integer.toString(SortUtils.LAST_NAME)%>" />
+	</c:url>
+	<c:url var="sortLinkEmail" value="/customer/list">
+		<c:param name="sort" value="<%=Integer.toString(SortUtils.EMAIL)%>" />
+	</c:url>
+
 	<div id="wrapper">
 		<div id="header">
 			<h2>Customer manager system</h2>
@@ -21,17 +35,17 @@
 			<input type="button" value="Add Customer"
 				onclick="window.location.href='showFormForAdd'; return false;"
 				class="add-button" />
-				
+
 			<form:form action="search" method="GET">
                 Search customer: <input type="text" name="theSearchName" />
 				<input type="submit" value="Search" class="add-button" />
 			</form:form>
-			
+
 			<table>
 				<tr>
-					<th>First name</th>
-					<th>Last name</th>
-					<th>email</th>
+					<th><a href="${sortLinkFirstName}">First Name</a></th>
+					<th><a href="${sortLinkLastName}">Last Name</a></th>
+					<th><a href="${sortLinkEmail}">Email</a></th>
 					<th>Action</th>
 				</tr>
 				<c:forEach var="tempCustomer" items="${customers}">

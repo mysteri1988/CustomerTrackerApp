@@ -52,4 +52,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.searchCustomer(theName);
 	}
 
+	@Override
+	@Transactional
+	public List<Customer> getCustomers(int theSortField) {
+		return customerDao.getCustomers(theSortField);
+	}
+
 }
